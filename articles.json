@@ -1,0 +1,24 @@
+{
+    "articles": [
+        {
+            "id": 0,
+            "title": "TestTitle",
+            "subtitle": "testsub",
+            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+            "tags": ["lorem", "ipsum", "test"]
+        },
+        {
+            "id": 1,
+            "title": "TestTitle2",
+            "subtitle": "testsub2",
+            "content": "My trip to Australia was fascinating. <img:nicepic.png> As you can see, kangaroos are cute.",
+            "tags": ["kangaroos", "Australia", "test"]
+        },
+        {
+            "id": 2,
+            "title": "TestTitle3",
+            "content": "I would like to enter in a CTF group so I can learn from others #goals",
+            "tags": ["ctf", "test"]
+        }
+    ]
+}

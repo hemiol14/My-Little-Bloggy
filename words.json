@@ -1,0 +1,25 @@
+{
+    "words": [
+        {
+            "id": 0,
+            "name": "Shodan",
+            "website": "https://www.shodan.io/",
+            "description": "Search Engine for the Internet of Everything.",
+            "tags": ["IoT", "search", "camera"]
+        },
+        {
+            "id": 1,
+            "name": "HackTheBox",
+            "website": "https://www.hackthebox.com/",
+            "description": "Play place to practice with machines. Now it even offers learning paths",
+            "tags": ["htb", "vm", "hack", "hacking"]
+        },
+        {
+            "id": 2,
+            "title": "TryHackMe",
+            "website": "https://tryhackme.com/",
+            "description": "Another website to learn about hacking",
+            "tags": ["hack", "hacking", "learn", "advent"]
+        }
+    ]
+}

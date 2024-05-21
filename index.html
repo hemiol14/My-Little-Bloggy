@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>✨🦄✨</title>
+    <style type="text/css">
+        * {
+          margin: 0;
+          padding: 0;
+        }
+        html,body {
+            height: 100%;
+            width: 100%;
+        }
+        nav {
+            width: 100%;
+            height: 30px;
+            background-color: black;
+            display: flex;
+            justify-content: flex-end;
+        }
+        aside {
+            position: fixed;
+            top: 30px;
+            right: 0;
+            width: 10%;
+            background-color: coral;
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            background-color: ghostwhite;
+        }
+        article {
+            margin: 20px 10px 5px 10px;
+        }
+    </style>
+    <script type="text/javascript">
+        let mainArticle = "";
+        let lastEntries = "";
+
+        async function readJSONs() {
+            let response = ""
+            const lol = await fetch('https://raw.githubusercontent.com/hemiol14/My-Little-Bloggy/master/articles.json')
+                        .then((response) => response.json())
+                        .then((data) => {
+                            response = data;
+                            console.log(data);
+                        });
+            console.log("articles2="+response);
+            response.articles.forEach(fillArticles);
+            const element = document.getElementById("mainSection");
+            element.innerHTML += mainArticle;
+            const listEntries = document.getElementById("lastEntries");
+            listEntries.innerHTML += lastEntries;
+        }
+
+        function fillArticles(json){
+            mainArticle += "<article>";
+            mainArticle += "<h1>" + json.title + "</h1>";
+            lastEntries += "<li>" + json.title + "</li>";
+            if (json.subtitle) {
+                mainArticle += "<h3>" + json.subtitle + "</h3>";
+            }
+            mainArticle += "<p>" + json.content + "</p>";
+            mainArticle += "</article>";
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            readJSONs();    
+
+        }, false);
+        
+    </script>
+</head>
+<body>
+    <nav>
+        <li><a href="">Home</a></li>
+        <li><a class="linkImHere" href="#">Blog</a></li>
+    </nav>
+    <aside>
+        <input type="text"></input>
+        <ul id="lastEntries"></ul>
+        <ul id="monthYear"></ul>
+    </aside>
+    <main id="mainSection">     
+    </main>
+</body>
+</html>

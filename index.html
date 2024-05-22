@@ -24,45 +24,68 @@
             position: fixed;
             top: 30px;
             right: 0;
+
             width: 10%;
-            background-color: coral;
+            height: 100%;
+
             display: flex;
             flex-direction: column;
+            
+            padding: 30px 15px 10px 15px;
+            background: repeating-linear-gradient(
+                40deg,
+                #FFFBFA,
+                #FFFBFA 20px,
+                #FFB6C1 10px,
+                #FFB6C1 40px
+              );
+        }
+        input {
+            border-radius: 25px;
+            border: 1px solid #FFB6C1;
+            height: 15px;
+            margin: 10px 0 10px 0;
+            padding: 8px;
+        }
+        li {
+            margin-left: 20px;
         }
         main {
-            width: 80%;
+            width: 90%;
+            height: 100%;
             display: flex;
             flex-direction: column;
             background-color: ghostwhite;
+            align-items: center;
         }
         article {
-            margin: 20px 10px 5px 10px;
+            margin: 20px 10px 10px 10px;
+            width: 80%;
         }
     </style>
     <script type="text/javascript">
         let mainArticle = "";
         let lastEntries = "";
 
-        async function readJSONs() {
-            let response = ""
-            const lol = await fetch('https://raw.githubusercontent.com/hemiol14/My-Little-Bloggy/master/articles.json')
-                        .then((response) => response.json())
-                        .then((data) => {
-                            response = data;
-                            console.log(data);
-                        });
-            console.log("articles2="+response);
-            response.articles.forEach(fillArticles);
-            const element = document.getElementById("mainSection");
-            element.innerHTML += mainArticle;
-            const listEntries = document.getElementById("lastEntries");
-            listEntries.innerHTML += lastEntries;
+        async function requestInfo(URL) {
+            const response = await fetch(URL);
+
+            if (!response.ok) {
+                const message = `An error has occured: ${response.status}`;
+                throw new Error(message);
+            }
+
+            const data = await response.json();
+            console.log(data);
+
+            return data;            
         }
 
         function fillArticles(json){
             mainArticle += "<article>";
             mainArticle += "<h1>" + json.title + "</h1>";
             lastEntries += "<li>" + json.title + "</li>";
+
             if (json.subtitle) {
                 mainArticle += "<h3>" + json.subtitle + "</h3>";
             }
@@ -71,8 +94,21 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            readJSONs();    
+            const mainSecElem = document.getElementById("mainSection");
+            const listEntriesElem = document.getElementById("lastEntries");
 
+            requestInfo('https://raw.githubusercontent.com/hemiol14/My-Little-Bloggy/master/articles.json').then((response) => {
+                if (response != "" && response){
+                    response.articles.forEach(fillArticles);
+                
+                    mainSecElem.innerHTML += mainArticle;                
+                    listEntriesElem.innerHTML += lastEntries;
+                } else {
+                    console.log("Problem with response");
+                }
+            }).catch(error => {
+                error.message; // 'An error has occurred: 404'
+            });;    
         }, false);
         
     </script>

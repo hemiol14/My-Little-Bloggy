@@ -11,7 +11,7 @@
             "id": 1,
             "title": "TestTitle2",
             "subtitle": "testsub2",
-            "content": "My trip to Australia was fascinating. <img:[smolcreepykangaroos.jpg,Wallabies wandering at night]> As you can see, kangaroos are cute.",
+            "content": "My trip to Australia was fascinating. <img src='media/smolcreepykangaroos.jpg' alt='scary kangaroos'><figcaption>Wallabies wandering at night</figcaption> As you can see, kangaroos are cute.",
             "tags": ["kangaroos", "Australia", "test"]
         },
         {
